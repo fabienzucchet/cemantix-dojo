@@ -21,7 +21,7 @@ async function handler(_req: Request): Promise<Response> {
     });
     const result = await response.json();
 
-  return new Response(`Le mot ${word} a une similarité de ${result.simscore} avec le mot du jour.`);
+  return new Response(`Le mot ${word} a une similarité de ${Math.round(result.simscore * 1e6)/1e6} avec le mot du jour.`);
 }
 
 serve(handler);
