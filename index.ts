@@ -19,10 +19,9 @@ async function handler(_req: Request): Promise<Response> {
             type: "General Word2Vec",
         }),
     });
+    const result = await response.json();
 
-    console.log(await response.json());
-
-  return new Response("Vous avez saisi : " + word);
+  return new Response(`Le mot ${word} a une similarité de ${result.simscore} avec le mot du jour.`);
 }
 
 serve(handler);
