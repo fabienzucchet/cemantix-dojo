@@ -5,7 +5,7 @@ const WORD = "chat";
 
 async function handler(_req: Request): Promise<Response> {
     const payload = await _req.formData();
-    const word = payload?.get("text");
+    const word = payload?.get("text")?.toString().trim();
 
     const response = await fetch(WORD2VEC_API_URL, {
         method: "POST",
